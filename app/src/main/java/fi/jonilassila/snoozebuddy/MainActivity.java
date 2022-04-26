@@ -14,7 +14,8 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     Button sleepStartButton;
-    int hour, minute;
+    Button sleepEndButton;
+    int hour, minute, hour2, minute2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         sleepStartButton = findViewById(R.id.sleepStartTime);
 
     }
-
 
     /** Time picker to set sleeping start time
      *
@@ -47,5 +47,23 @@ public class MainActivity extends AppCompatActivity {
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, style, onTimeSetListener, hour, minute, true);
         timePickerDialog.setTitle("Select time");
         timePickerDialog.show();
+    }
+
+    public void popTimePicker2(View view) {
+
+        TimePickerDialog.OnTimeSetListener onTimeSetListener2 = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker2, int selectedHour2, int selectedMinute2) {
+                hour2 = selectedHour2;
+                minute2 = selectedMinute2;
+                sleepEndButton.setText(String.format(Locale.getDefault(),"%02d:%02d", hour2, minute2));
+            }
+        };
+
+        int style2 = AlertDialog.THEME_HOLO_DARK;
+
+        TimePickerDialog endTimePickerDialog = new TimePickerDialog(this, style2, onTimeSetListener2, hour2, minute2, true);
+        endTimePickerDialog.setTitle("Select time");
+        endTimePickerDialog.show();
     }
 }
