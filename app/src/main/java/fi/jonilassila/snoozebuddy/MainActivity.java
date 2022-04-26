@@ -6,11 +6,6 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    // snooze buddy ftw
-    // jee jee
-    // hello maailma
-
     //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
