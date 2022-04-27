@@ -4,24 +4,43 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.icu.text.UFormat;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TimePicker;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
     Button sleepStartButton;
     Button sleepEndButton;
+    Button calculateButton;
     int hour, minute, hour2, minute2;
+    String startTime, endTime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sleepStartButton = findViewById(R.id.sleepStartTime);
+        sleepEndButton = findViewById(R.id.sleepEndTime);
+        calculateButton = findViewById(R.id.calcButton);
+
+        Calendar time = Calendar.getInstance();
+        time.set(Calendar.HOUR_OF_DAY, hour);
+        time.set(Calendar.MINUTE, minute);
+
+        Calendar time2 = Calendar.getInstance();
+        time2.set(Calendar.HOUR_OF_DAY, hour2);
+        time2.set(Calendar.MINUTE, minute2);
 
     }
 
@@ -38,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 hour = selectedHour;
                 minute = selectedMinute;
                 sleepStartButton.setText(String.format(Locale.getDefault(),"%02d:%02d", hour, minute));
+
+                startTime = selectedHour + ":" + selectedMinute;
+
 
             }
         };
@@ -56,7 +78,10 @@ public class MainActivity extends AppCompatActivity {
             public void onTimeSet(TimePicker timePicker2, int selectedHour2, int selectedMinute2) {
                 hour2 = selectedHour2;
                 minute2 = selectedMinute2;
-                sleepEndButton.setText(String.format(Locale.getDefault(),"%02d:%02d", hour2, minute2));
+                sleepEndButton.setText(String.format(Locale.getDefault(), "%02d:%02d", hour2, minute2));
+
+                endTime = selectedHour2 + ":" + selectedMinute2;
+
             }
         };
 
@@ -65,5 +90,23 @@ public class MainActivity extends AppCompatActivity {
         TimePickerDialog endTimePickerDialog = new TimePickerDialog(this, style2, onTimeSetListener2, hour2, minute2, true);
         endTimePickerDialog.setTitle("Select time");
         endTimePickerDialog.show();
+
+        calculateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+                try {
+                    Date a = sdf.parse(startTime);
+                    Date b = sdf.parse(endTime);
+                    long difference = (b.getTime() - a.getTime()) / 60000;
+                    if (difference < 0) {
+                        difference = difference + 1440;
+                    }
+                    Log.d("Time", String.valueOf(difference));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }
