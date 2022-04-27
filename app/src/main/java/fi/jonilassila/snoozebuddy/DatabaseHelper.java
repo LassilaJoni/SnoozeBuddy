@@ -14,8 +14,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL1 = "ID";
     private static final String COL2 = "sleepName";
     private static final String COL3 = "sleepDescription";
-    private static final String COL4 = "sleepdurationHours";
-    private static final String COL5 = "sleepdurationMinutes";
+    private static final String COL4 = "sleepDurationMinutes";
+    private static final String COL5 = "sleepDurationHours";
 
 
     public DatabaseHelper(Context context) {

@@ -21,7 +21,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-
+    public final static String EXTRA = "fi.jonilassila.snoozebuddy_EXTRA";
     Button sleepStartButton;
     Button sleepEndButton;
     Button calculateButton;
@@ -54,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /** Time picker to set sleeping start time
+    /**
+     * Time picker to set sleeping start time
      *
-     * @param view
-     * Done with the help of YouTube content creator Code With Cal
+     * @param view Done with the help of YouTube content creator Code With Cal
      */
     public void popTimePicker(View view) {
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                 hour = selectedHour;
                 minute = selectedMinute;
-                sleepStartButton.setText(String.format(Locale.getDefault(),"%02d:%02d", hour, minute));
+                sleepStartButton.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
 
                 startTime = selectedHour + ":" + selectedMinute;
 
@@ -114,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
                         difference = difference + 1440;
                     }
                     Log.d("Time", String.valueOf(difference));
-                     minutes = difference%60;
-                     hours = difference/60;
+                    minutes = difference % 60;
+                    hours = difference / 60;
                     Log.d("TimeHours", hours + ":" + minutes);
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -129,26 +129,27 @@ public class MainActivity extends AppCompatActivity {
                 long sleepHours = hours;
                 Log.d("Sleepminute1", String.valueOf(sleepHours));
 
-                    AddData(newEntry, newEntry2, sleepMinutes, sleepHours);
-                    sleepname.setText("");
-                    sleepDescription.setText("");
+                AddData(newEntry, newEntry2, sleepMinutes, sleepHours);
+                sleepname.setText("");
+                sleepDescription.setText("");
 
 
             }
         });
-}
+    }
 
     public void AddData(String newEntry, String newEntry2, long sleepMinutes, long sleepHours) {
         boolean insertData = databaseHelper.addData(newEntry, newEntry2, sleepMinutes, sleepHours);
         Log.d("Sleepminute2", Long.toString(hours));
         //If insertdata is true
-        if(insertData) {
+        if (insertData) {
             toastMessage(newEntry + " added to the list");
             toastMessage(sleepHours + " hours " + sleepMinutes + " minutes");
         } else {
             toastMessage("Error");
         }
     }
+
     public void viewData(View view) {
         Intent intent = new Intent(MainActivity.this, ListDataActivity.class);
         startActivity(intent);
