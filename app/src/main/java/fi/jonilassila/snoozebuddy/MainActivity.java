@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.icu.text.UFormat;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,7 +27,10 @@ public class MainActivity extends AppCompatActivity {
     Button calculateButton;
     int hour, minute, hour2, minute2;
     String startTime, endTime;
-
+    EditText sleepname;
+    EditText sleepDescription;
+    DatabaseHelper databaseHelper;
+    long minutes, hours;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         sleepStartButton = findViewById(R.id.sleepStartTime);
         sleepEndButton = findViewById(R.id.sleepEndTime);
         calculateButton = findViewById(R.id.calcButton);
+        sleepname = findViewById(R.id.editTxtSleepName);
+        sleepDescription = findViewById(R.id.editTxtDescription);
 
         Calendar time = Calendar.getInstance();
         time.set(Calendar.HOUR_OF_DAY, hour);
@@ -41,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         Calendar time2 = Calendar.getInstance();
         time2.set(Calendar.HOUR_OF_DAY, hour2);
         time2.set(Calendar.MINUTE, minute2);
+
+        databaseHelper = new DatabaseHelper(this);
 
     }
 
@@ -104,17 +114,47 @@ public class MainActivity extends AppCompatActivity {
                         difference = difference + 1440;
                     }
                     Log.d("Time", String.valueOf(difference));
-                    long minutes = difference%60;
-                    long hours = difference/60;
+                     minutes = difference%60;
+                     hours = difference/60;
                     Log.d("TimeHours", hours + ":" + minutes);
-                    Log.d("TimeMinutes", String.valueOf(minutes));
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
                 //submit name and description to
+                String newEntry = sleepname.getText().toString();
+                String newEntry2 = sleepDescription.getText().toString();
+                //String newEntry2 = sleepDescription.getText().toString();
+                //Check if text field is empty
+                long sleepMinutes = minutes;
+                long sleepHours = hours;
+                Log.d("Sleepminute1", String.valueOf(sleepHours));
+
+                    AddData(newEntry, newEntry2, sleepMinutes, sleepHours);
+                    sleepname.setText("");
+                    sleepDescription.setText("");
 
 
             }
         });
+}
+
+    public void AddData(String newEntry, String newEntry2, long sleepMinutes, long sleepHours) {
+        boolean insertData = databaseHelper.addData(newEntry, newEntry2, sleepMinutes, sleepHours);
+        Log.d("Sleepminute2", Long.toString(hours));
+        //If insertdata is true
+        if(insertData) {
+            toastMessage(newEntry + " added to the list");
+            toastMessage(sleepHours + " hours " + sleepMinutes + " minutes");
+        } else {
+            toastMessage("Error");
+        }
+    }
+    public void viewData(View view) {
+        Intent intent = new Intent(MainActivity.this, ListDataActivity.class);
+        startActivity(intent);
+    }
+
+    private void toastMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
