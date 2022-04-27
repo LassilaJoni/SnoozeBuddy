@@ -98,14 +98,22 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     Date a = sdf.parse(startTime);
                     Date b = sdf.parse(endTime);
+
                     long difference = (b.getTime() - a.getTime()) / 60000;
                     if (difference < 0) {
                         difference = difference + 1440;
                     }
                     Log.d("Time", String.valueOf(difference));
+                    long minutes = difference%60;
+                    long hours = difference/60;
+                    Log.d("TimeHours", hours + ":" + minutes);
+                    Log.d("TimeMinutes", String.valueOf(minutes));
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+                //submit name and description to
+
+
             }
         });
     }
