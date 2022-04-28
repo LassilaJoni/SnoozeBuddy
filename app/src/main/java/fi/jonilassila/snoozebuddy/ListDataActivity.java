@@ -5,6 +5,7 @@ import static fi.jonilassila.snoozebuddy.MainActivity.EXTRA;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,9 +13,11 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ListDataActivity extends AppCompatActivity {
     private static final String TAG = "ListDataActivity";
@@ -38,10 +41,25 @@ public class ListDataActivity extends AppCompatActivity {
                 Intent nextActivity = new Intent(ListDataActivity.this, DetailsActivity.class);
                 nextActivity.putExtra(EXTRA, i);
                 startActivity(nextActivity);
-
             }
         });
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.moon);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.moon:
+                        return true;
+                }
+                return false;
+            }
+        });
     }
 
     private void populateListView() {
