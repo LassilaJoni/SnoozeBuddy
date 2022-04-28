@@ -1,7 +1,12 @@
 package fi.jonilassila.snoozebuddy;
 
+import static fi.jonilassila.snoozebuddy.MainActivity.EXTRA;
+
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -26,6 +31,17 @@ public class ListDataActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
 
         populateListView();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent nextActivity = new Intent(ListDataActivity.this, DetailsActivity.class);
+                nextActivity.putExtra(EXTRA, i);
+                startActivity(nextActivity);
+
+            }
+        });
+
     }
 
     private void populateListView() {

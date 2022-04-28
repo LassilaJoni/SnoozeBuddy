@@ -3,6 +3,7 @@ package fi.jonilassila.snoozebuddy;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -66,4 +67,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
 
     }
+    /*public Cursor getName() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        //SELECT id, msg, date FROM messages WHERE id = ?"
+        Cursor dataName = db.rawQuery("SELECT " + COL2 + " FROM " + TABLE_NAME ,null);
+        return dataName;
+    }*/
 }
