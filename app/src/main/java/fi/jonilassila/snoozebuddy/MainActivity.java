@@ -132,8 +132,6 @@ public class MainActivity extends AppCompatActivity {
                 AddData(newEntry, newEntry2, sleepMinutes, sleepHours);
                 sleepname.setText("");
                 sleepDescription.setText("");
-
-
             }
         });
     }

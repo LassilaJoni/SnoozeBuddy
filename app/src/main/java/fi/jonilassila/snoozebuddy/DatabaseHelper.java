@@ -11,12 +11,12 @@ import android.util.Log;
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "DatabaseHelper";
 
-    private static final String TABLE_NAME = "people_table";
-    private static final String COL1 = "ID";
-    private static final String COL2 = "sleepName";
-    private static final String COL3 = "sleepDescription";
-    private static final String COL4 = "sleepDurationMinutes";
-    private static final String COL5 = "sleepDurationHours";
+    public static final String TABLE_NAME = "people_table";
+    public static final String COL1 = "ID";
+    public static final String COL2 = "sleepName";
+    public static final String COL3 = "sleepDescription";
+    public static final String COL4 = "sleepDurationMinutes";
+    public static final String COL5 = "sleepDurationHours";
 
 
     public DatabaseHelper(Context context) {
@@ -66,11 +66,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor data = db.rawQuery(query, null);
         return data;
 
-    }
-    public Cursor getName() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        //SELECT id, msg, date FROM messages WHERE id = ?"
-        Cursor dataName = db.rawQuery("SELECT " + COL2 + " FROM " + TABLE_NAME ,null);
-        return dataName;
     }
 }
