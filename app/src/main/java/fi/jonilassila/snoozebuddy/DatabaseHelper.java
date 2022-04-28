@@ -18,6 +18,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL3 = "sleepDescription";
     private static final String COL4 = "sleepDurationMinutes";
     private static final String COL5 = "sleepDurationHours";
+    private static final String COL6 = "sleepStartTime";
+    private static final String COL7 = "sleepEndTime";
 
 
     public DatabaseHelper(Context context) {
@@ -31,7 +33,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COL2 + " TEXT,"
                 + COL3 + " TEXT,"
                 + COL4 + " NUMBER,"
-                + COL5 + " NUMBER)");
+                + COL5 + " NUMBER,"
+                + COL6 + " TEXT,"
+                        + COL7 + " TEXT)");
 
         db.execSQL(createTable);
     }
@@ -42,17 +46,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addData(String item, String item2, long item3, long item4) {
+    public boolean addData(String item, String item2, long item3, long item4, String item5, String item6) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL2, item);
         contentValues.put(COL3, item2);
         contentValues.put(COL4, item3);
         contentValues.put(COL5, item4);
+        contentValues.put(COL6, item5);
+        contentValues.put(COL7, item6);
 
         Log.d(TAG, "addData: Add " + item + " to " + TABLE_NAME);
 
-        long result = db.insert(TABLE_NAME, COL1, contentValues);
+        //long result = db.insert(TABLE_NAME, COL1, contentValues);
+        long result = db.insert(TABLE_NAME, null, contentValues);
+
         //If data is incorrectly placed returns -1
         if (result == -1) {
             return false;
@@ -66,12 +74,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String query = "SELECT * FROM " + TABLE_NAME;
         Cursor data = db.rawQuery(query, null);
         return data;
-    }
-    public boolean deleteData(View view, int i) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE id= " + (i +1));
-        //FROM " + TABLE_NAME + " WHERE id= " + (i +1);
-
-        return true;
     }
 }

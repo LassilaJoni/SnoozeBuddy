@@ -42,6 +42,8 @@ public class DetailsActivity extends AppCompatActivity {
         TextView txtName = findViewById(R.id.txtName);
         TextView txtDescription = findViewById(R.id.txtDescription);
         TextView txtDuration = findViewById(R.id.txtDuration);
+        TextView txtStart = findViewById(R.id.txtStart);
+        TextView txtEnd = findViewById(R.id.txtEnd);
 
         Bundle b = getIntent().getExtras();
         i = b.getInt(MainActivity.EXTRA, 0);
@@ -49,13 +51,17 @@ public class DetailsActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
-        String selectQuery = "SELECT sleepName, sleepDescription, sleepDurationMinutes, sleepDurationHours  FROM " + TABLE_NAME + " WHERE id= " + (i +1);
+        String selectQuery = "SELECT sleepName, sleepDescription, sleepDurationMinutes, sleepDurationHours, sleepStartTime, sleepEndTime  FROM " + TABLE_NAME + " WHERE id= " + (i +1);
 
         Cursor c = db.rawQuery(selectQuery, null);
+
         String sleepName = "";
         String sleepDescription = "";
         String sleepMinutes = "";
         String sleepHours = "";
+        String sleepStart = "";
+        String sleepEnd = "";
+
         if(c!=null) {
             c.moveToFirst();
             Log.i("cursor",c.getString(0));
@@ -64,12 +70,16 @@ public class DetailsActivity extends AppCompatActivity {
             sleepDescription = c.getString(1);
             sleepMinutes = c.getString(2);
             sleepHours = c.getString(3);
-
+            sleepStart = c.getString(4);
+            sleepEnd = c.getString(5);
 
         }
+
         txtName.setText(sleepName);
         txtDescription.setText(sleepDescription);
         txtDuration.setText(sleepHours + " hours and " + sleepMinutes + " minutes");
+        txtStart.setText("You went to sleep at " + sleepStart);
+        txtEnd.setText("You woke up at " + sleepEnd);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -88,6 +98,13 @@ public class DetailsActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    public void deleteData(View view) {
+        SQLiteDatabase db = databaseHelper.getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE id= '" + (i +1));
+        Intent intent = new Intent(DetailsActivity.this, ListDataActivity.class);
+        startActivity(intent);
     }
 }
 

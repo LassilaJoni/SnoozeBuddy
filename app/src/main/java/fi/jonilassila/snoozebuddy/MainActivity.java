@@ -152,15 +152,15 @@ public class MainActivity extends AppCompatActivity {
                 long sleepHours = hours;
                 Log.d("Sleepminute1", String.valueOf(sleepHours));
 
-                AddData(newEntry, newEntry2, sleepMinutes, sleepHours);
+                AddData(newEntry, newEntry2, sleepMinutes, sleepHours, startTime, endTime);
                 sleepname.setText("");
                 sleepDescription.setText("");
             }
         });
     }
 
-    public void AddData(String newEntry, String newEntry2, long sleepMinutes, long sleepHours) {
-        boolean insertData = databaseHelper.addData(newEntry, newEntry2, sleepMinutes, sleepHours);
+    public void AddData(String newEntry, String newEntry2, long sleepMinutes, long sleepHours, String startTime, String endTime) {
+        boolean insertData = databaseHelper.addData(newEntry, newEntry2, sleepMinutes, sleepHours, startTime, endTime);
         Log.d("Sleepminute2", Long.toString(hours));
         //If insertdata is true
         if (insertData) {
