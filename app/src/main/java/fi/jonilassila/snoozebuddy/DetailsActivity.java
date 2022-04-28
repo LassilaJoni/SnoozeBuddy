@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
+import android.view.View;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     DatabaseHelper databaseHelper;
     TextView sleepname;
+    int i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class DetailsActivity extends AppCompatActivity {
         TextView txtDuration = findViewById(R.id.txtDuration);
 
         Bundle b = getIntent().getExtras();
-        int i = b.getInt(MainActivity.EXTRA, 0);
+        i = b.getInt(MainActivity.EXTRA, 0);
 
         databaseHelper = new DatabaseHelper(this);
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
@@ -67,5 +69,6 @@ public class DetailsActivity extends AppCompatActivity {
 
 
 }
+
     }
 
