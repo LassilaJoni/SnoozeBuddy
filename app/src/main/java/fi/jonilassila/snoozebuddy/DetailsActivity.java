@@ -33,6 +33,8 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details_layout);
         TextView txtName = findViewById(R.id.txtName);
+        TextView txtDescription = findViewById(R.id.txtDescription);
+        TextView txtDuration = findViewById(R.id.txtDuration);
 
         Bundle b = getIntent().getExtras();
         int i = b.getInt(MainActivity.EXTRA, 0);
@@ -40,19 +42,27 @@ public class DetailsActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
-        String selectQuery = "SELECT sleepName, sleepDescription FROM " + TABLE_NAME + " WHERE id= " + (i + 1);
+        String selectQuery = "SELECT sleepName, sleepDescription, sleepDurationMinutes, sleepDurationHours  FROM " + TABLE_NAME + " WHERE id= " + (i +1);
 
         Cursor c = db.rawQuery(selectQuery, null);
-        String str = "";
+        String sleepName = "";
+        String sleepDescription = "";
+        String sleepMinutes = "";
+        String sleepHours = "";
         if(c!=null) {
             c.moveToFirst();
             Log.i("cursor",c.getString(0));
             Log.i("cursor",c.getString(1));
-            str = c.getString(0);
+            sleepName = c.getString(0);
+            sleepDescription = c.getString(1);
+            sleepMinutes = c.getString(2);
+            sleepHours = c.getString(3);
 
 
         }
-        txtName.setText(str);
+        txtName.setText(sleepName);
+        txtDescription.setText(sleepDescription);
+        txtDuration.setText(sleepHours + " hours and " + sleepMinutes + " minutes");
 
 
 
