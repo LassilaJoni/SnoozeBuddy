@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/Black">
 
     <Button
         android:id="@+id/sleepStartTime"
@@ -22,7 +23,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.124" />
 
     <Button
         android:id="@+id/sleepEndTime"
@@ -72,6 +73,11 @@
         android:hint="Give your sleep a name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,12 +87,16 @@
         android:id="@+id/editTxtDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="Description"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTxtSleepName" />
 
@@ -96,20 +106,12 @@
         android:layout_height="wrap_content"
         android:text="Extra information \nExample. Drank coffee or stressful day"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintBottom_toTopOf="@+id/editTxtDescription"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/calcButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.591"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtSleepName"
-        app:layout_constraintVertical_bias="0.575" />
-
-    <Button
-        android:id="@+id/btnViewData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="viewData"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editTxtDescription"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -102,7 +102,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     public void deleteData(View view) {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE id= '" + (i +1));
+        db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE id= " + (i +1));
         Intent intent = new Intent(DetailsActivity.this, ListDataActivity.class);
         startActivity(intent);
     }

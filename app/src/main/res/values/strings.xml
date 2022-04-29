@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SnoozeBuddy</string>
+    <color name="Black">#4F6367</color>
 </resources>
