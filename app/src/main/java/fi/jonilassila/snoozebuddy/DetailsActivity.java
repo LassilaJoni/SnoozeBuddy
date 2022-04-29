@@ -81,6 +81,7 @@ public class DetailsActivity extends AppCompatActivity {
         txtStart.setText("You went to sleep at " + sleepStart);
         txtEnd.setText("You woke up at " + sleepEnd);
 
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
