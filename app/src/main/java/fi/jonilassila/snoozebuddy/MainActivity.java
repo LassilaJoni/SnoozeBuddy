@@ -131,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     Date a = sdf.parse(startTime);
                     Date b = sdf.parse(endTime);
-
                     long difference = (b.getTime() - a.getTime()) / 60000;
                     if (difference < 0) {
                         difference = difference + 1440;

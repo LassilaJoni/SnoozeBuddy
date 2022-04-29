@@ -26,7 +26,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, TABLE_NAME, null, 1);
     }
 
-
+    /**
+     * onCreate creates a table with columns (id,sleepName,sleepDescription,sleepDurationMinutes,
+     * sleepDurationHours,sleepStartTime and sleepEndTime
+     * @param db databaseHelper
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = ("CREATE TABLE " + TABLE_NAME
@@ -41,12 +45,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createTable);
     }
 
+    /**
+     * onUpgrade deletes table and creates a new one after
+     * @param db databaseHelper
+     * @param i ei kait käytössä
+     * @param i1 ei kait käytössä
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
 
+    /**
+     * adds data to database table people_table
+     * @param item sleep name
+     * @param item2 sleep description
+     * @param item3 sleep duration minutes
+     * @param item4 sleep duration hours
+     * @param item5 sleep start time
+     * @param item6 sleep end time
+     * @return true if data is correctly placed into database
+     */
     public boolean addData(String item, String item2, long item3, long item4, String item5, String item6) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -70,6 +90,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * Gets all data from the database people_table
+     * returns all data from the database table people_table
+     */
     public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME;
