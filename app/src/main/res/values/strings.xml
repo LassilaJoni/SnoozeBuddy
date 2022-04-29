@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SnoozeBuddy</string>
-    <color name="Black">#4F6367</color>
+    <color name="Black">#485460</color>
+    <color name="LightBlack">#808e9b</color>
 </resources>

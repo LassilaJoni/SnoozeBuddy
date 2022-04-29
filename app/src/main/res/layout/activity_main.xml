@@ -16,6 +16,7 @@
         android:height="50dp"
         android:onClick="popTimePicker"
         android:text="Sleeping start time"
+        android:textColor="#000000"
         android:textSize="15dp"
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,6 +34,7 @@
         android:height="50dp"
         android:onClick="popTimePicker2"
         android:text="Wake up time"
+        android:textColor="#000000"
         android:textSize="15dp"
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,13 +52,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu"/>
+        app:menu="@menu/bottom_nav_menu"
+        android:background="@color/LightBlack"/>
 
     <Button
         android:id="@+id/calcButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
+        android:textColor="#000000"
         app:cornerRadius="25dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
