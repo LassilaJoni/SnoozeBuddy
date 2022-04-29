@@ -20,6 +20,10 @@
         </activity>
         <activity android:name=".ListDataActivity" />
         <activity android:name=".DetailsActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
