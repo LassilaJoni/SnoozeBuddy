@@ -26,6 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, TABLE_NAME, null, 1);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = ("CREATE TABLE " + TABLE_NAME
