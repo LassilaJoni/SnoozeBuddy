@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/audiowide</item>
+        <item>@font/happy_monkey</item>
+        <item>@font/open_sans</item>
+        <item>@font/open_sans_condensed_bold</item>
+        <item>@font/open_sans_extrabold</item>
+        <item>@font/roboto</item>
+        <item>@font/roboto_thin</item>
+        <item>@font/shojumaru</item>
+        <item>@font/ubuntu</item>
+    </array>
+</resources>
