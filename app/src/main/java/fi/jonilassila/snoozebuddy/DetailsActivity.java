@@ -24,15 +24,9 @@ import java.util.ArrayList;
 public class DetailsActivity extends AppCompatActivity {
 
     private static final String TABLE_NAME = "people_table";
-    private static final String COL1 = "ID";
-    private static final String COL2 = "sleepName";
-    private static final String COL3 = "sleepDescription";
-    private static final String COL4 = "sleepDurationMinutes";
-    private static final String COL5 = "sleepDurationHours";
-    String sleepnames;
+
 
     DatabaseHelper databaseHelper;
-    TextView sleepname;
     int i;
 
     @Override
@@ -51,7 +45,11 @@ public class DetailsActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
-        String selectQuery = "SELECT sleepName, sleepDescription, sleepDurationMinutes, sleepDurationHours, sleepStartTime, sleepEndTime  FROM " + TABLE_NAME + " WHERE id= " + (i +1);
+        String strSQL = "UPDATE " + TABLE_NAME + " SET ID = " + i + " WHERE ID = "+ i;
+
+        db.execSQL(strSQL);
+
+        String selectQuery = "SELECT sleepName, sleepDescription, sleepDurationMinutes, sleepDurationHours, sleepStartTime, sleepEndTime  FROM " + TABLE_NAME + " WHERE ID= " + (i + 1);
 
         Cursor c = db.rawQuery(selectQuery, null);
 
@@ -103,7 +101,16 @@ public class DetailsActivity extends AppCompatActivity {
 
     public void deleteData(View view) {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
-        db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE id= " + (i +1));
+        db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE ID= " + (i + 1));
+
+        //String strSQL = "UPDATE people_table SET id = 1 WHERE id > 1";
+        String strSQL1 = "UPDATE people_table SET id = (id +1) WHERE id < 0";
+        String strSQL = "UPDATE people_table SET id = (id -1) WHERE id > 1";
+        db.execSQL(strSQL);
+        db.execSQL(strSQL1);
+        //UPDATE myTable SET id = - id WHERE id < 0;
+        //UPDATE sqlite_sequence SET seq=1 WHERE name='<table>'
+        //delete from sqlite_sequence where name='people_table
         Intent intent = new Intent(DetailsActivity.this, ListDataActivity.class);
         startActivity(intent);
     }
