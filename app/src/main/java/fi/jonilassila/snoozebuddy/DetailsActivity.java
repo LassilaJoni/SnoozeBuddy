@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,11 +22,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 
+/**
+ * The type Details activity.
+ */
 public class DetailsActivity extends AppCompatActivity {
 
     private static final String TABLE_NAME = "people_table";
 
 
+    /**
+     * The Database helper.
+     */
     DatabaseHelper databaseHelper;
     int i;
 
@@ -99,20 +106,36 @@ public class DetailsActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Message popup
+     * @param message
+     */
+    private void toastMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Deletes selected sleep from database
+     * Automatically resets the ID when removing a sleep
+     *
+     * @param view the view
+     */
     public void deleteData(View view) {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_NAME + " WHERE ID= " + (i + 1));
 
-        //String strSQL = "UPDATE people_table SET id = 1 WHERE id > 1";
+        //Reset the id when deleting a sleep
         String strSQL1 = "UPDATE people_table SET id = (id +1) WHERE id < 0";
         String strSQL = "UPDATE people_table SET id = (id -1) WHERE id > 1";
         db.execSQL(strSQL);
         db.execSQL(strSQL1);
-        //UPDATE myTable SET id = - id WHERE id < 0;
-        //UPDATE sqlite_sequence SET seq=1 WHERE name='<table>'
-        //delete from sqlite_sequence where name='people_table
+        //After deleting sleep goes back to the listview
         Intent intent = new Intent(DetailsActivity.this, ListDataActivity.class);
         startActivity(intent);
+        toastMessage("Sleep deleted");
+
     }
+
+
 }
 

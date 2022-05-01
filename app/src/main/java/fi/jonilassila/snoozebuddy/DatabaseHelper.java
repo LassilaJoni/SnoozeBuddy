@@ -21,7 +21,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL6 = "sleepStartTime";
     private static final String COL7 = "sleepEndTime";
 
-
     public DatabaseHelper(Context context) {
         super(context, TABLE_NAME, null, 1);
     }
