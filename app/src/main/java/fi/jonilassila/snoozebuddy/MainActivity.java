@@ -40,13 +40,16 @@ public class MainActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     long minutes, hours;
 
+    /** provide methods for converting date between a specific instant in time
+     * fill the window with the UI provided from layout file
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /**
-         *  fill the window with the UI provided from layout file
-         */
+
+
         sleepStartButton = findViewById(R.id.sleepStartTime);
         sleepEndButton = findViewById(R.id.sleepEndTime);
         calculateButton = findViewById(R.id.calcButton);
@@ -55,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         /**
          *
-         * provide methods for converting date between a specific instant in time
+         *
          */
         Calendar time = Calendar.getInstance();
         time.set(Calendar.HOUR_OF_DAY, hour);
@@ -71,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.home);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            /** Time picker to set sleeping start time
+             *
+             * @param item
+             * @return
+             */
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -87,9 +95,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * Time picker to set sleeping start time
-     *
+    /** TimePicker static class that handles operations of the time selection fragment
      * @param view Done with the help of YouTube content creator Code With Cal
      */
     public void popTimePicker(View view) {
@@ -115,9 +121,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void popTimePicker2(View view) {
-        /**
-         *     TimePicker static class that handles operations of the time selection fragment
-         */
+
         TimePickerDialog.OnTimeSetListener onTimeSetListener2 = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker2, int selectedHour2, int selectedMinute2) {
@@ -137,7 +141,8 @@ public class MainActivity extends AppCompatActivity {
         endTimePickerDialog.show();
 
         /**  SimpleDateFormat is a concrete class for formatting and parsing dates in a locale-sensitive manner
-         *
+         * AddData append a data to the AttributeData list if the attribute is multi-valued.
+         * InsertData Insert a string
          */
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
