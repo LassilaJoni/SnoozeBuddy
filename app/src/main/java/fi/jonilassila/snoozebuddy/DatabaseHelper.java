@@ -21,7 +21,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL6 = "sleepStartTime";
     private static final String COL7 = "sleepEndTime";
 
-
     public DatabaseHelper(Context context) {
         super(context, TABLE_NAME, null, 1);
     }
@@ -34,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = ("CREATE TABLE " + TABLE_NAME
-                + "(ID INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "(ID INTEGER PRIMARY KEY,"
                 + COL2 + " TEXT,"
                 + COL3 + " TEXT,"
                 + COL4 + " NUMBER,"

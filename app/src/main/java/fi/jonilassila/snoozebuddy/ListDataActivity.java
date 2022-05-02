@@ -19,9 +19,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * The type List data activity.
+ */
 public class ListDataActivity extends AppCompatActivity {
     private static final String TAG = "ListDataActivity";
 
+    /**
+     * The Database helper.
+     */
     DatabaseHelper databaseHelper;
 
     private ListView listView;
