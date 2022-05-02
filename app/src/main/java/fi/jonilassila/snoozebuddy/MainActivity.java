@@ -27,6 +27,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     public final static String EXTRA = "fi.jonilassila.snoozebuddy_EXTRA";
+    /**
+     * declare buttons
+     */
     Button sleepStartButton;
     Button sleepEndButton;
     Button calculateButton;
@@ -41,12 +44,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        /**
+         *  fill the window with the UI provided from layout file
+         */
         sleepStartButton = findViewById(R.id.sleepStartTime);
         sleepEndButton = findViewById(R.id.sleepEndTime);
         calculateButton = findViewById(R.id.calcButton);
         sleepname = findViewById(R.id.editTxtSleepName);
         sleepDescription = findViewById(R.id.editTxtDescription);
 
+        /**
+         * provide methods for converting date between a specific instant in time
+         */
         Calendar time = Calendar.getInstance();
         time.set(Calendar.HOUR_OF_DAY, hour);
         time.set(Calendar.MINUTE, minute);
