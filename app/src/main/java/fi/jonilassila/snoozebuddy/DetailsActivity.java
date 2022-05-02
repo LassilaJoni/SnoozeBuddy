@@ -107,6 +107,7 @@ public class DetailsActivity extends AppCompatActivity {
      * Message popup which indicates that a listed item was successfully deleted
      * @param message
      */
+    //Message popup
     private void toastMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }

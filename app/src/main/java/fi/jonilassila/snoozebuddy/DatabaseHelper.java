@@ -47,8 +47,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * onUpgrade deletes table and creates a new one after
      * @param db databaseHelper
-     * @param i ei kait käytössä
-     * @param i1 ei kait käytössä
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
@@ -91,7 +89,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * Gets all data from the database people_table
-     * returns all data from the database table people_table
+     * @return returns all data from the database table people_table
      */
     public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();

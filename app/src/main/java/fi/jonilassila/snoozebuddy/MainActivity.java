@@ -75,6 +75,12 @@ public class MainActivity extends AppCompatActivity {
          * @author Edvard Nivala
          */
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            /** Time picker to set sleeping start time
+             *public boolean is main navigation par which user choose from
+             * onNaviagationItemSelected Called when an item in the navigation menu is selected.
+             * @param item
+             * @return
+             */
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -166,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 // submit name and description to
 
+
                 String newEntry = sleepname.getText().toString();
                 String newEntry2 = sleepDescription.getText().toString();
 
@@ -181,7 +188,17 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+    /**
+     * Adds data to the database
+     * @param newEntry Sleep name
+     * @param newEntry2 Sleep description
+     * @param sleepMinutes Sleep minutes
+     * @param sleepHours Sleep hours
+     * @param startTime Sleep start time
+     * @param endTime Sleep end time
+     * If data is succesfully placed to the database insertdata returns true otherwise false
+     * @author Joni Lassila
+     */
     public void AddData(String newEntry, String newEntry2, long sleepMinutes, long sleepHours, String startTime, String endTime) {
         boolean insertData = databaseHelper.addData(newEntry, newEntry2, sleepMinutes, sleepHours, startTime, endTime);
         Log.d("Sleepminute2", Long.toString(hours));
