@@ -32,6 +32,8 @@ public class DetailsActivity extends AppCompatActivity {
 
     /**
      * The Database helper.
+     *
+     * this is a javadoc esimerkki
      */
     DatabaseHelper databaseHelper;
     int i;
