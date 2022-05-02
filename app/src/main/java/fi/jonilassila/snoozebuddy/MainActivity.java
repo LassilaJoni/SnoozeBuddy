@@ -173,7 +173,6 @@ public class MainActivity extends AppCompatActivity {
 
                 String newEntry = sleepname.getText().toString();
                 String newEntry2 = sleepDescription.getText().toString();
-                //String newEntry2 = sleepDescription.getText().toString();
                 //Check if text field is empty
                 long sleepMinutes = minutes;
                 long sleepHours = hours;
