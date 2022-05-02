@@ -115,7 +115,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void popTimePicker2(View view) {
-
+        /**
+         *     TimePicker static class that handles operations of the time selection fragment
+         */
         TimePickerDialog.OnTimeSetListener onTimeSetListener2 = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker2, int selectedHour2, int selectedMinute2) {
