@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
     /**  SimpleDateFormat is a concrete class for formatting and parsing dates in a locale-sensitive manner
      * AddData append a data to the AttributeData list if the attribute is multi-valued.
      * InsertData Insert a string
+     * timepicker can be used to select a time
      */
     public void popTimePicker2(View view) {
 
@@ -144,7 +145,9 @@ public class MainActivity extends AppCompatActivity {
         endTimePickerDialog.setTitle("Select time");
         endTimePickerDialog.show();
 
-
+        /** onClick on the view for each ID specified .
+         * SimpleDateFormat concrete class for formatting and parsing dates in a locale-sensitive manner.
+         */
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -183,6 +186,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * AddData is a method that does x y and z
+     * viewData method that show data
+     * InsertData Inserts character data at the given offset.
+     */
     public void AddData(String newEntry, String newEntry2, long sleepMinutes, long sleepHours, String startTime, String endTime) {
         boolean insertData = databaseHelper.addData(newEntry, newEntry2, sleepMinutes, sleepHours, startTime, endTime);
         Log.d("Sleepminute2", Long.toString(hours));
