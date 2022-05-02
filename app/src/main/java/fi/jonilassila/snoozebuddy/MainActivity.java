@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
     /** provide methods for converting date between a specific instant in time
      * fill the window with the UI provided from layout file
+     * onCreate where we initialize our activity. Most importantly, here we will usually call
+     * Database Helper  is a simple utility interface for looking-up a datasource, retrieving a connection and performing SQL statement retrieval based on key replacements.
      * @param savedInstanceState
      */
     @Override
@@ -56,10 +58,8 @@ public class MainActivity extends AppCompatActivity {
         sleepname = findViewById(R.id.editTxtSleepName);
         sleepDescription = findViewById(R.id.editTxtDescription);
 
-        /**
-         *
-         *
-         */
+
+
         Calendar time = Calendar.getInstance();
         time.set(Calendar.HOUR_OF_DAY, hour);
         time.set(Calendar.MINUTE, minute);
@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             /** Time picker to set sleeping start time
              *public boolean is main navigation par which user choose from
+             * onNaviagationItemSelected Called when an item in the navigation menu is selected.
              * @param item
              * @return
              */
@@ -119,7 +120,10 @@ public class MainActivity extends AppCompatActivity {
         timePickerDialog.setTitle("Select time");
         timePickerDialog.show();
     }
-
+    /**  SimpleDateFormat is a concrete class for formatting and parsing dates in a locale-sensitive manner
+     * AddData append a data to the AttributeData list if the attribute is multi-valued.
+     * InsertData Insert a string
+     */
     public void popTimePicker2(View view) {
 
         TimePickerDialog.OnTimeSetListener onTimeSetListener2 = new TimePickerDialog.OnTimeSetListener() {
@@ -140,10 +144,7 @@ public class MainActivity extends AppCompatActivity {
         endTimePickerDialog.setTitle("Select time");
         endTimePickerDialog.show();
 
-        /**  SimpleDateFormat is a concrete class for formatting and parsing dates in a locale-sensitive manner
-         * AddData append a data to the AttributeData list if the attribute is multi-valued.
-         * InsertData Insert a string
-         */
+
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
