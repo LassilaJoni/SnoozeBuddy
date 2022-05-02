@@ -136,14 +136,16 @@ public class MainActivity extends AppCompatActivity {
         endTimePickerDialog.setTitle("Select time");
         endTimePickerDialog.show();
 
+        /**  SimpleDateFormat is a concrete class for formatting and parsing dates in a locale-sensitive manner
+         *
+         */
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
                 try {
-                    /**
-                     * SimpleDateFormat is a concrete class for formatting and parsing dates in a locale-sensitive manner
-                     */
+
+
                     Date a = sdf.parse(startTime);
                     Date b = sdf.parse(endTime);
                     long difference = (b.getTime() - a.getTime()) / 60000;
@@ -157,7 +159,9 @@ public class MainActivity extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                //submit name and description to
+                // submit name and description to
+
+
                 String newEntry = sleepname.getText().toString();
                 String newEntry2 = sleepDescription.getText().toString();
                 //String newEntry2 = sleepDescription.getText().toString();
