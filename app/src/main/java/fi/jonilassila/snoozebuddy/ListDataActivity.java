@@ -53,6 +53,12 @@ public class ListDataActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.moon);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+            /**
+             * Method onNavigationItemSelected is the method that determines which icon in the bottom navigation bar is selected.
+             * @param item which "item" is selected in the bottom navigation bar
+             * @return return boolean value based on which icon or "item" is selected
+             */
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {

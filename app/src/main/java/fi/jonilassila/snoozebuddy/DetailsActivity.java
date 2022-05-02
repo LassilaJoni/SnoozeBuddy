@@ -108,7 +108,7 @@ public class DetailsActivity extends AppCompatActivity {
         });
     }
 
-    /**
+    /*
      * Message popup
      * @param message
      */
