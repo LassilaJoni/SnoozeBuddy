@@ -139,6 +139,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
                 try {
+                    /**
+                     * SimpleDateFormat is a concrete class for formatting and parsing dates in a locale-sensitive manner
+                     */
                     Date a = sdf.parse(startTime);
                     Date b = sdf.parse(endTime);
                     long difference = (b.getTime() - a.getTime()) / 60000;
