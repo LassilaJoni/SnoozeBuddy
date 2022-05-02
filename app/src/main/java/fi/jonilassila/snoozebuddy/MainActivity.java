@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             /** Time picker to set sleeping start time
-             *
+             *public boolean is main navigation par which user choose from
              * @param item
              * @return
              */
