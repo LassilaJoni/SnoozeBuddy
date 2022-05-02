@@ -19,15 +19,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-/**
- * The type List data activity.
- */
 public class ListDataActivity extends AppCompatActivity {
     private static final String TAG = "ListDataActivity";
 
-    /**
-     * The Database helper.
-     */
     DatabaseHelper databaseHelper;
 
     private ListView listView;
@@ -41,6 +35,11 @@ public class ListDataActivity extends AppCompatActivity {
 
         populateListView();
 
+        /**
+         * onItemClick method to determine which ListView item was pressed
+         * starts a new Details activity which holds the stored database data to that specific item
+         * @author Joni Lassila
+         */
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -52,16 +51,18 @@ public class ListDataActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.moon);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-            /**
-             * Method onNavigationItemSelected is the method that determines which icon in the bottom navigation bar is selected.
-             * @param item which "item" is selected in the bottom navigation bar
-             * @return return boolean value based on which icon or "item" is selected
-             */
+        /**
+         * method onNavigationItemSelected is used to determine which icon in the bottom navigation bar is selected
+         * @param item which icon or "item" is selected in the bottom navigation bar
+         * @return return boolean value based on which icon or "item" is selected
+         * @author Edvard Nivala
+         */
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
+                    // if selected icon is "home", starts MainActivity.java
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         overridePendingTransition(0,0);

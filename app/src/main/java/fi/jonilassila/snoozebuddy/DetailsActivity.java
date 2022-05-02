@@ -21,20 +21,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-
-/**
- * The type Details activity.
- */
 public class DetailsActivity extends AppCompatActivity {
 
     private static final String TABLE_NAME = "people_table";
 
-
-    /**
-     * The Database helper.
-     *
-     * this is a javadoc esimerkki
-     */
     DatabaseHelper databaseHelper;
     int i;
 
@@ -79,7 +69,6 @@ public class DetailsActivity extends AppCompatActivity {
             sleepHours = c.getString(3);
             sleepStart = c.getString(4);
             sleepEnd = c.getString(5);
-
         }
 
         txtName.setText(sleepName);
@@ -88,8 +77,14 @@ public class DetailsActivity extends AppCompatActivity {
         txtStart.setText("You went to sleep at " + sleepStart);
         txtEnd.setText("You woke up at " + sleepEnd);
 
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        /**
+         * method onNavigationItemSelected is used to determine which icon in the bottom navigation bar is selected
+         * @param item which icon or "item" is selected in the bottom navigation bar
+         * @return return boolean value based on which icon or "item" is selected
+         * @author Edvard Nivala
+         */
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -109,7 +104,7 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     /*
-     * Message popup
+     * Message popup which indicates that a listed item was successfully deleted
      * @param message
      */
     private void toastMessage(String message) {
@@ -121,6 +116,7 @@ public class DetailsActivity extends AppCompatActivity {
      * Automatically resets the ID when removing a sleep
      *
      * @param view the view
+     * @author Joni Lassila
      */
     public void deleteData(View view) {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
@@ -135,9 +131,6 @@ public class DetailsActivity extends AppCompatActivity {
         Intent intent = new Intent(DetailsActivity.this, ListDataActivity.class);
         startActivity(intent);
         toastMessage("Sleep deleted");
-
     }
-
-
 }
 

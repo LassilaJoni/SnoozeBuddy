@@ -27,18 +27,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     public final static String EXTRA = "fi.jonilassila.snoozebuddy_EXTRA";
-    /**
-     * declare buttons
-     */
-    Button sleepStartButton;
-    Button sleepEndButton;
-    Button calculateButton;
-    int hour, minute, hour2, minute2;
-    String startTime, endTime;
-    EditText sleepname;
-    EditText sleepDescription;
-    DatabaseHelper databaseHelper;
-    long minutes, hours;
+
+        Button sleepStartButton;
+        Button sleepEndButton;
+        Button calculateButton;
+        int hour, minute, hour2, minute2;
+        String startTime, endTime;
+        EditText sleepname;
+        EditText sleepDescription;
+        DatabaseHelper databaseHelper;
+        long minutes, hours;
 
     /** provide methods for converting date between a specific instant in time
      * fill the window with the UI provided from layout file
@@ -51,14 +49,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         sleepStartButton = findViewById(R.id.sleepStartTime);
         sleepEndButton = findViewById(R.id.sleepEndTime);
         calculateButton = findViewById(R.id.calcButton);
         sleepname = findViewById(R.id.editTxtSleepName);
         sleepDescription = findViewById(R.id.editTxtDescription);
-
-
 
         Calendar time = Calendar.getInstance();
         time.set(Calendar.HOUR_OF_DAY, hour);
@@ -73,13 +68,13 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.home);
 
+        /**
+         * method onNavigationItemSelected is used to determine which icon in the bottom navigation bar is selected
+         * @param item which icon or "item" is selected in the bottom navigation bar
+         * @return return boolean value based on which icon or "item" is selected
+         * @author Edvard Nivala
+         */
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            /** Time picker to set sleeping start time
-             *public boolean is main navigation par which user choose from
-             * onNaviagationItemSelected Called when an item in the navigation menu is selected.
-             * @param item
-             * @return
-             */
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -96,9 +91,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /** TimePicker static class that handles operations of the time selection fragment
-     * @param view Done with the help of YouTube content creator Code With Cal
+    /**
+     * TimePicker static class that handles operations of the time selection fragment
+     * @param view
      */
+    // Done with the help of YouTube content creator Code With Cal
     public void popTimePicker(View view) {
 
         TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
@@ -120,10 +117,11 @@ public class MainActivity extends AppCompatActivity {
         timePickerDialog.setTitle("Select time");
         timePickerDialog.show();
     }
-    /**  SimpleDateFormat is a concrete class for formatting and parsing dates in a locale-sensitive manner
-     * AddData append a data to the AttributeData list if the attribute is multi-valued.
-     * InsertData Insert a string
+    /**
+     * TimePicker static class that handles operations of the time selection fragment
+     * SimpleDateFormat is a concrete class for formatting and parsing dates in a locale-sensitive manner
      * timepicker can be used to select a time
+     * @author Edvard Nivala
      */
     public void popTimePicker2(View view) {
 
@@ -145,16 +143,14 @@ public class MainActivity extends AppCompatActivity {
         endTimePickerDialog.setTitle("Select time");
         endTimePickerDialog.show();
 
-        /** onClick on the view for each ID specified .
-         * SimpleDateFormat concrete class for formatting and parsing dates in a locale-sensitive manner.
+        /** onClick on the view for each ID specified
+         * SimpleDateFormat concrete class for formatting and parsing dates in a locale-sensitive manner
          */
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
                 try {
-
-
                     Date a = sdf.parse(startTime);
                     Date b = sdf.parse(endTime);
                     long difference = (b.getTime() - a.getTime()) / 60000;
@@ -170,9 +166,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 // submit name and description to
 
-
                 String newEntry = sleepname.getText().toString();
                 String newEntry2 = sleepDescription.getText().toString();
+
                 //Check if text field is empty
                 long sleepMinutes = minutes;
                 long sleepHours = hours;
@@ -185,11 +181,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * AddData is a method that does x y and z
-     * viewData method that show data
-     * InsertData Inserts character data at the given offset.
-     */
+
     public void AddData(String newEntry, String newEntry2, long sleepMinutes, long sleepHours, String startTime, String endTime) {
         boolean insertData = databaseHelper.addData(newEntry, newEntry2, sleepMinutes, sleepHours, startTime, endTime);
         Log.d("Sleepminute2", Long.toString(hours));
