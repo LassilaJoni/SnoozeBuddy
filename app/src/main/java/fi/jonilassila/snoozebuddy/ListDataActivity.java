@@ -21,6 +21,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ListDataActivity extends AppCompatActivity {
     private static final String TAG = "ListDataActivity";
+    /**
+     * onCreate called to do initial creation of the fragment
+     */
 
     DatabaseHelper databaseHelper;
 
