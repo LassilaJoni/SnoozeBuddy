@@ -77,6 +77,12 @@ public class MainActivity extends AppCompatActivity {
          * @author Edvard Nivala
          */
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            /** Time picker to set sleeping start time
+             *public boolean is main navigation par which user choose from
+             * onNaviagationItemSelected Called when an item in the navigation menu is selected.
+             * @param item
+             * @return
+             */
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -165,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 // submit name and description to
 
+                // Gets sleep name and sleep description
                 String newEntry = sleepname.getText().toString();
                 String newEntry2 = sleepDescription.getText().toString();
 
@@ -201,6 +208,11 @@ public class MainActivity extends AppCompatActivity {
         } else {
             toastMessage("Error");
         }
+    }
+
+    public void viewData(View view) {
+        Intent intent = new Intent(MainActivity.this, ListDataActivity.class);
+        startActivity(intent);
     }
 
     private void toastMessage(String message) {
