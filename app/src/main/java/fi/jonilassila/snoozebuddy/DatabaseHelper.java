@@ -25,10 +25,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, TABLE_NAME, null, 1);
     }
 
+    /*DatabaseHelper has been created with help from YouTuber (CodingWithMitch)
+    https://www.youtube.com/watch?v=SK98ayjhk1E
+    Stack Overflow and the holy bible (https://developer.android.com/training/data-storage/sqlite)
+    */
     /**
      * onCreate creates a table with columns (id,sleepName,sleepDescription,sleepDurationMinutes,
      * sleepDurationHours,sleepStartTime and sleepEndTime
      * @param db databaseHelper
+     * @author Joni Lassila
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -47,6 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * onUpgrade deletes table and creates a new one after
      * @param db databaseHelper
+     * @author Joni Lassila
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
@@ -63,6 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * @param item5 sleep start time
      * @param item6 sleep end time
      * @return true if data is correctly placed into database
+     * @author Joni Lassila
      */
     public boolean addData(String item, String item2, long item3, long item4, String item5, String item6) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -90,6 +97,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * Gets all data from the database people_table
      * @return returns all data from the database table people_table
+     * @author Joni Lassila
      */
     public Cursor getData() {
         SQLiteDatabase db = this.getWritableDatabase();
