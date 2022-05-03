@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * TimePicker static class that handles operations of the time selection fragment
-     *
+     * it is a widget for selecting the time of day, in either 24-hour or AM/PM mode
      * @param view
      * @author Edvard Nivala
      */
@@ -123,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
     /**
      * TimePicker static class that handles operations of the time selection fragment
      * it is a widget for selecting the time of day, in either 24-hour or AM/PM mode
-     *
      * @author Edvard Nivala
      */
     // Done with the help of YouTube content creator Code With Cal
@@ -146,8 +145,11 @@ public class MainActivity extends AppCompatActivity {
         endTimePickerDialog.setTitle("Select time");
         endTimePickerDialog.show();
 
-        /** onClick on the view for each ID specified
-         * SimpleDateFormat concrete class for formatting and parsing dates in a locale-sensitive manner
+        /**
+         * onClick on the view for each ID specified
+         * SimpleDateFormat concrete class for formatting and parsing dates in a locale-sensitive manner,
+         * calculates difference between start and end times in milliseconds and converts it into hours:minutes
+         * @author Edvard Nivala, Joni Lassila
          */
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
