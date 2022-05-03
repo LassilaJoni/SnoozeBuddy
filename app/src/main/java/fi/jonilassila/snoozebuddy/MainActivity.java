@@ -28,21 +28,22 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
     public final static String EXTRA = "fi.jonilassila.snoozebuddy_EXTRA";
 
-        Button sleepStartButton;
-        Button sleepEndButton;
-        Button calculateButton;
-        int hour, minute, hour2, minute2;
-        String startTime, endTime;
-        EditText sleepname;
-        EditText sleepDescription;
-        DatabaseHelper databaseHelper;
-        long minutes, hours;
+    Button sleepStartButton;
+    Button sleepEndButton;
+    Button calculateButton;
+    int hour, minute, hour2, minute2;
+    String startTime, endTime;
+    EditText sleepname;
+    EditText sleepDescription;
+    DatabaseHelper databaseHelper;
+    long minutes, hours;
 
     /**
      * provide methods for converting date between a specific instant in time
      * fill the window with the UI provided from layout file
      * onCreate where we initialize our activity.
      * Database Helper is a simple utility interface for looking-up a datasource, retrieving a connection and performing SQL statement retrieval based on key replacements.
+     *
      * @param savedInstanceState
      * @author Joni Lassila, Edvard Nivala
      */
@@ -77,19 +78,14 @@ public class MainActivity extends AppCompatActivity {
          * @author Edvard Nivala
          */
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            /** Time picker to set sleeping start time
-             *public boolean is main navigation par which user choose from
-             * onNaviagationItemSelected Called when an item in the navigation menu is selected.
-             * @param item
-             * @return
-             */
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch(item.getItemId()) {
+                switch (item.getItemId()) {
                     case R.id.moon:
-                        startActivity(new Intent(getApplicationContext(),ListDataActivity.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), ListDataActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.home:
                         return true;
@@ -101,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * TimePicker static class that handles operations of the time selection fragment
+     *
      * @param view
      * @author Edvard Nivala
      */
@@ -123,9 +120,11 @@ public class MainActivity extends AppCompatActivity {
         timePickerDialog.setTitle("Select time");
         timePickerDialog.show();
     }
+
     /**
      * TimePicker static class that handles operations of the time selection fragment
      * it is a widget for selecting the time of day, in either 24-hour or AM/PM mode
+     *
      * @author Edvard Nivala
      */
     // Done with the help of YouTube content creator Code With Cal
@@ -189,13 +188,14 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Adds data to the database
-     * @param newEntry Sleep name
-     * @param newEntry2 Sleep description
+     *
+     * @param newEntry     Sleep name
+     * @param newEntry2    Sleep description
      * @param sleepMinutes Sleep minutes
-     * @param sleepHours Sleep hours
-     * @param startTime Sleep start time
-     * @param endTime Sleep end time
-     * If data is succesfully placed to the database insertdata returns true otherwise false
+     * @param sleepHours   Sleep hours
+     * @param startTime    Sleep start time
+     * @param endTime      Sleep end time
+     *                     If data is succesfully placed to the database insertdata returns true otherwise false
      * @author Joni Lassila
      */
     public void AddData(String newEntry, String newEntry2, long sleepMinutes, long sleepHours, String startTime, String endTime) {

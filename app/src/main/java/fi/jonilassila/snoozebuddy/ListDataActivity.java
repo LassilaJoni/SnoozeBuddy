@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ListDataActivity extends AppCompatActivity {
@@ -64,8 +65,8 @@ public class ListDataActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     // if selected icon is "home", starts MainActivity.java
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.moon:
                         return true;
@@ -79,7 +80,7 @@ public class ListDataActivity extends AppCompatActivity {
     private void populateListView() {
         Cursor data = databaseHelper.getData();
         ArrayList<String> listData = new ArrayList<>();
-        while(data.moveToNext()) {
+        while (data.moveToNext()) {
             listData.add(data.getString(1));
         }
 

@@ -26,12 +26,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /*DatabaseHelper has been created with help from YouTuber (CodingWithMitch)
-    https://www.youtube.com/watch?v=SK98ayjhk1E
     Stack Overflow and the holy bible (https://developer.android.com/training/data-storage/sqlite)
     */
+
     /**
      * onCreate creates a table with columns (id,sleepName,sleepDescription,sleepDurationMinutes,
      * sleepDurationHours,sleepStartTime and sleepEndTime
+     *
      * @param db databaseHelper
      * @author Joni Lassila
      */
@@ -44,13 +45,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COL4 + " NUMBER,"
                 + COL5 + " NUMBER,"
                 + COL6 + " TEXT,"
-                        + COL7 + " TEXT)");
+                + COL7 + " TEXT)");
 
         db.execSQL(createTable);
     }
 
     /**
      * onUpgrade deletes table and creates a new one after
+     *
      * @param db databaseHelper
      * @author Joni Lassila
      */
@@ -62,7 +64,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * adds data to database table people_table
-     * @param item sleep name
+     *
+     * @param item  sleep name
      * @param item2 sleep description
      * @param item3 sleep duration minutes
      * @param item4 sleep duration hours
@@ -74,6 +77,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean addData(String item, String item2, long item3, long item4, String item5, String item6) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        //COl indicates the column name and item is the value
         contentValues.put(COL2, item);
         contentValues.put(COL3, item2);
         contentValues.put(COL4, item3);
@@ -83,7 +87,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         Log.d(TAG, "addData: Add " + item + " to " + TABLE_NAME);
 
-        //long result = db.insert(TABLE_NAME, COL1, contentValues);
         long result = db.insert(TABLE_NAME, null, contentValues);
 
         //If data is incorrectly placed returns -1
@@ -96,6 +99,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     /**
      * Gets all data from the database people_table
+     *
      * @return returns all data from the database table people_table
      * @author Joni Lassila
      */

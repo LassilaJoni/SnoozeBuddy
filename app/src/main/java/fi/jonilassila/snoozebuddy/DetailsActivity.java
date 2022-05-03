@@ -44,10 +44,13 @@ public class DetailsActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
-        String strSQL = "UPDATE " + TABLE_NAME + " SET ID = " + i + " WHERE ID = "+ i;
+        //Maybe unnecessary but too scared to delete
+        //String strSQL = "UPDATE " + TABLE_NAME + " SET ID = " + i + " WHERE ID = "+ i;
+        //db.execSQL(strSQL);
 
-        db.execSQL(strSQL);
-
+        /*Selects every column in database where id is 1 (Because indexing starts at 0 so need to + 1 to it.
+        Because when selecting first item from listview i is 0
+        */
         String selectQuery = "SELECT sleepName, sleepDescription, sleepDurationMinutes, sleepDurationHours, sleepStartTime, sleepEndTime  FROM " + TABLE_NAME + " WHERE ID= " + (i + 1);
 
         Cursor c = db.rawQuery(selectQuery, null);
@@ -59,10 +62,11 @@ public class DetailsActivity extends AppCompatActivity {
         String sleepStart = "";
         String sleepEnd = "";
 
-        if(c!=null) {
+        if (c != null) {
             c.moveToFirst();
-            Log.i("cursor",c.getString(0));
-            Log.i("cursor",c.getString(1));
+            Log.i("cursor", c.getString(0));
+            Log.i("cursor", c.getString(1));
+            //Gets all the necessary data from selected sleep from list
             sleepName = c.getString(0);
             sleepDescription = c.getString(1);
             sleepMinutes = c.getString(2);
@@ -90,12 +94,12 @@ public class DetailsActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.moon:
-                        startActivity(new Intent(getApplicationContext(),ListDataActivity.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), ListDataActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;
@@ -103,11 +107,7 @@ public class DetailsActivity extends AppCompatActivity {
         });
     }
 
-    /*
-     * Message popup which indicates that a listed item was successfully deleted
-     * @param message
-     */
-    //Message popup
+    //Message popup at bottom of the screen
     private void toastMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
@@ -116,7 +116,6 @@ public class DetailsActivity extends AppCompatActivity {
      * Deletes selected sleep from database
      * Automatically resets the ID when removing a sleep
      *
-     * @param view the view
      * @author Joni Lassila
      */
     public void deleteData(View view) {
