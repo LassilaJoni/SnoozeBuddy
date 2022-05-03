@@ -37,6 +37,7 @@ public class DetailsActivity extends AppCompatActivity {
         TextView txtDuration = findViewById(R.id.txtDuration);
         TextView txtStart = findViewById(R.id.txtStart);
         TextView txtEnd = findViewById(R.id.txtEnd);
+        TextView txtSleep = findViewById(R.id.txtSleepMinimum);
 
         Bundle b = getIntent().getExtras();
         i = b.getInt(MainActivity.EXTRA, 0);
@@ -79,9 +80,13 @@ public class DetailsActivity extends AppCompatActivity {
         txtDuration.setText(sleepHours + " hours and " + sleepMinutes + " minutes");
         txtStart.setText("You went to sleep at " + sleepStart);
         txtEnd.setText("You woke up at " + sleepEnd);
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
+        if(sleepHours.matches("[0-6]")) {
+            txtSleep.setText("You should get at least 7-9 hours of sleep");
+        } else {
+            txtSleep.setText("");
+        }
         /**
          * method onNavigationItemSelected is used to determine which icon in the bottom navigation bar is selected
          * @param item which icon or "item" is selected in the bottom navigation bar

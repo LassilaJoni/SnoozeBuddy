@@ -168,4 +168,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtStart"
         app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/txtSleepMinimum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        android:fontFamily="@font/open_sans_extrabold"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnDeleteSleep"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEnd"
+        app:layout_constraintVertical_bias="0.108" />
 </androidx.constraintlayout.widget.ConstraintLayout>
