@@ -77,7 +77,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean addData(String item, String item2, long item3, long item4, String item5, String item6) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        //COl indicates the column name and item is the value
+        //COL indicates the column name and item is the value
         contentValues.put(COL2, item);
         contentValues.put(COL3, item2);
         contentValues.put(COL4, item3);

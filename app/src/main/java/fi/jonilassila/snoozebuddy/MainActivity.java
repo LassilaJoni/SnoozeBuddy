@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
      * onCreate where we initialize our activity.
      * Database Helper is a simple utility interface for looking-up a datasource, retrieving a connection and performing SQL statement retrieval based on key replacements.
      *
-     * @param savedInstanceState
      * @author Joni Lassila, Edvard Nivala
      */
     @Override
@@ -179,9 +178,15 @@ public class MainActivity extends AppCompatActivity {
                 long sleepHours = hours;
                 Log.d("Sleepminute1", String.valueOf(sleepHours));
 
-                AddData(newEntry, newEntry2, sleepMinutes, sleepHours, startTime, endTime);
-                sleepname.setText("");
-                sleepDescription.setText("");
+                //If sleep name is empty doesn't allow placing data, description is optional
+                if(newEntry.isEmpty()) {
+                    toastMessage("Give your sleep a name");
+                } else {
+                    AddData(newEntry, newEntry2, sleepMinutes, sleepHours, startTime, endTime);
+                    sleepname.setText("");
+                    sleepDescription.setText("");
+                }
+
             }
         });
     }
