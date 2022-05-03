@@ -78,10 +78,16 @@ public class DetailsActivity extends AppCompatActivity {
         txtName.setText(sleepName);
         txtDescription.setText(sleepDescription);
         txtDuration.setText(sleepHours + " hours and " + sleepMinutes + " minutes");
-        txtStart.setText("You went to sleep at " + sleepStart);
-        txtEnd.setText("You woke up at " + sleepEnd);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
+        //If sleep minutes is 0 adds one more 0
+        if(sleepMinutes.matches("[0]")) {
+            txtStart.setText("You went to sleep at " + sleepStart + "0");
+            txtEnd.setText("You woke up at " + sleepEnd + "0");
+        } else {
+            txtStart.setText("You went to sleep at " + sleepStart);
+            txtEnd.setText("You woke up at " + sleepEnd);
+        }
         if(sleepHours.matches("[0-6]")) {
             txtSleep.setText("You should get at least 7-9 hours of sleep");
         } else {
