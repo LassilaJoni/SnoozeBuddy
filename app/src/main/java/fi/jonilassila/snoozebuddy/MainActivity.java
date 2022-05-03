@@ -215,11 +215,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Takes to the listview
+     * @author Ahmad Ksbiati Chahrour
+     */
     public void viewData(View view) {
         Intent intent = new Intent(MainActivity.this, ListDataActivity.class);
         startActivity(intent);
     }
-
+    /**
+     * Popup message
+     * @author Ahmad Ksbiati Chahrour
+     */
     private void toastMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }

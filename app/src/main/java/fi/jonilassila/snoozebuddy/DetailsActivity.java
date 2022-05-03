@@ -54,7 +54,6 @@ public class DetailsActivity extends AppCompatActivity {
         String selectQuery = "SELECT sleepName, sleepDescription, sleepDurationMinutes, sleepDurationHours, sleepStartTime, sleepEndTime  FROM " + TABLE_NAME + " WHERE ID= " + (i + 1);
 
         Cursor c = db.rawQuery(selectQuery, null);
-
         String sleepName = "";
         String sleepDescription = "";
         String sleepMinutes = "";
@@ -74,7 +73,7 @@ public class DetailsActivity extends AppCompatActivity {
             sleepStart = c.getString(4);
             sleepEnd = c.getString(5);
         }
-
+        c.close();
         txtName.setText(sleepName);
         txtDescription.setText(sleepDescription);
         txtDuration.setText(sleepHours + " hours and " + sleepMinutes + " minutes");
