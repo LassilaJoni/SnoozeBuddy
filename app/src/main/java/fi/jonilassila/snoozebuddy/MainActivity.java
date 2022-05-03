@@ -38,11 +38,13 @@ public class MainActivity extends AppCompatActivity {
         DatabaseHelper databaseHelper;
         long minutes, hours;
 
-    /** provide methods for converting date between a specific instant in time
+    /**
+     * provide methods for converting date between a specific instant in time
      * fill the window with the UI provided from layout file
-     * onCreate where we initialize our activity. Most importantly, here we will usually call
-     * Database Helper  is a simple utility interface for looking-up a datasource, retrieving a connection and performing SQL statement retrieval based on key replacements.
+     * onCreate where we initialize our activity.
+     * Database Helper is a simple utility interface for looking-up a datasource, retrieving a connection and performing SQL statement retrieval based on key replacements.
      * @param savedInstanceState
+     * @author Joni Lassila, Edvard Nivala
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * TimePicker static class that handles operations of the time selection fragment
      * @param view
+     * @author Edvard Nivala
      */
     // Done with the help of YouTube content creator Code With Cal
     public void popTimePicker(View view) {
@@ -110,10 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 hour = selectedHour;
                 minute = selectedMinute;
                 sleepStartButton.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
-
                 startTime = selectedHour + ":" + selectedMinute;
-
-
             }
         };
 
@@ -125,10 +125,10 @@ public class MainActivity extends AppCompatActivity {
     }
     /**
      * TimePicker static class that handles operations of the time selection fragment
-     * SimpleDateFormat is a concrete class for formatting and parsing dates in a locale-sensitive manner
-     * timepicker can be used to select a time
+     * it is a widget for selecting the time of day, in either 24-hour or AM/PM mode
      * @author Edvard Nivala
      */
+    // Done with the help of YouTube content creator Code With Cal
     public void popTimePicker2(View view) {
 
         TimePickerDialog.OnTimeSetListener onTimeSetListener2 = new TimePickerDialog.OnTimeSetListener() {
@@ -137,12 +137,11 @@ public class MainActivity extends AppCompatActivity {
                 hour2 = selectedHour2;
                 minute2 = selectedMinute2;
                 sleepEndButton.setText(String.format(Locale.getDefault(), "%02d:%02d", hour2, minute2));
-
                 endTime = selectedHour2 + ":" + selectedMinute2;
-
             }
         };
 
+        // used to determine the style for the timepicker
         int style2 = AlertDialog.THEME_HOLO_DARK;
 
         TimePickerDialog endTimePickerDialog = new TimePickerDialog(this, style2, onTimeSetListener2, hour2, minute2, true);
@@ -172,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 // submit name and description to
 
-
+                // Gets sleep name and sleep description
                 String newEntry = sleepname.getText().toString();
                 String newEntry2 = sleepDescription.getText().toString();
 

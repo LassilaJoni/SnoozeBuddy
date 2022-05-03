@@ -78,6 +78,7 @@ public class ListDataActivity extends AppCompatActivity {
         });
     }
 
+    //Populates the list with added sleeps
     private void populateListView() {
         Cursor data = databaseHelper.getData();
         ArrayList<String> listData = new ArrayList<>();
