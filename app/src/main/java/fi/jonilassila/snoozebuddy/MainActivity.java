@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
      * fill the window with the UI provided from layout file
      * onCreate where we initialize our activity. Most importantly, here we will usually call
      * Database Helper  is a simple utility interface for looking-up a datasource, retrieving a connection and performing SQL statement retrieval based on key replacements.
-     * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,9 +169,7 @@ public class MainActivity extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                // submit name and description to
-
-
+                // Gets sleep name and sleep description
                 String newEntry = sleepname.getText().toString();
                 String newEntry2 = sleepDescription.getText().toString();
 
