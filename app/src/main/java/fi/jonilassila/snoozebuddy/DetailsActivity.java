@@ -73,7 +73,7 @@ public class DetailsActivity extends AppCompatActivity {
             sleepStart = c.getString(4);
             sleepEnd = c.getString(5);
         }
-        c.close();
+
         txtName.setText(sleepName);
         txtDescription.setText(sleepDescription);
         txtDuration.setText(sleepHours + " hours and " + sleepMinutes + " minutes");
